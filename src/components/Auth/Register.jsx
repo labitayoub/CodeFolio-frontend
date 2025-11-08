@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import { toast } from 'react-hot-toast';
 import { REGISTER_MUTATION } from '../../graphql/mutations';
 
 const Register = () => {
@@ -11,14 +12,12 @@ const Register = () => {
     password: '', 
     bio: '' 
   });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
   // Utiliser Apollo Client useMutation
   const [register, { loading }] = useMutation(REGISTER_MUTATION, {
     onCompleted: () => {
-      setSuccess('Inscription réussie ! Redirection...');
+      toast.success('Inscription réussie ! Redirection...');
       setTimeout(() => navigate('/login'), 2000);
     },
     onError: (err) => {
@@ -26,9 +25,9 @@ const Register = () => {
       
       // Gestion de l'erreur d'email déjà existant
       if (errorMessage.includes('E11000') || errorMessage.includes('duplicate') || errorMessage.includes('déjà utilisé')) {
-        setError('Cet email est déjà utilisé. Veuillez utiliser un autre email ou vous connecter.');
+        toast.error('Cet email est déjà utilisé. Veuillez utiliser un autre email ou vous connecter.');
       } else {
-        setError(errorMessage);
+        toast.error(errorMessage);
       }
     }
   });
@@ -38,13 +37,10 @@ const Register = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
-    setError('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
     
     // Appel de la mutation avec les variables
     register({
@@ -61,18 +57,6 @@ const Register = () => {
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
           Inscription
         </h2>
-
-        {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-            {error}
-          </div>
-        )}
-
-        {success && (
-          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-            {success}
-          </div>
-        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

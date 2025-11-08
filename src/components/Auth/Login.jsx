@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import { toast } from 'react-hot-toast';
 import { LOGIN_MUTATION } from '../../graphql/mutations';
 
 const Login = () => {
@@ -8,7 +9,6 @@ const Login = () => {
     email: '',
     password: ''
   });
-  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   // Utiliser Apollo Client useMutation
@@ -16,11 +16,11 @@ const Login = () => {
     onCompleted: (data) => {
       // Sauvegarder le token
       localStorage.setItem('token', data.login);
-      console.log('✅ Login réussi!');
+      toast.success('✅ Login réussi!');
       navigate('/');
     },
     onError: (err) => {
-      setError(err.message || 'Erreur de connexion');
+      toast.error(err.message || 'Erreur de connexion');
     }
   });
 
@@ -29,12 +29,10 @@ const Login = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
-    setError('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
     
     // Appel de la mutation avec les variables
     login({
@@ -51,12 +49,6 @@ const Login = () => {
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
           Connexion
         </h2>
-
-        {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-            {error}
-          </div>
-        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

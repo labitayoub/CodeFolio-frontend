@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import { removeToken } from "../utils/auth";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
   
   const handleLogout = () => {
     removeToken();
+    toast.success("Déconnexion réussie !");
     navigate("/login");
   };
 
