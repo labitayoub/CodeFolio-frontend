@@ -65,15 +65,37 @@ export const DELETE_PROJECT = gql`
     }
   }
 `;
-export const GET_EXPERIENCES = gql`
-  query GetExperiences {
-    getExperiences {
+// Experiences
+export const CREATE_EXPERIENCE = gql`
+  mutation CreateExperience($company: String!, $role: String!, $startDate: String!, $endDate: String, $description: String) {
+    createExperience(company: $company, role: $role, startDate: $startDate, endDate: $endDate, description: $description) {
       id
       company
       role
       startDate
       endDate
       description
+    }
+  }
+`;
+
+export const UPDATE_EXPERIENCE = gql`
+  mutation UpdateExperience($id: ID!, $company: String, $role: String, $startDate: String, $endDate: String, $description: String) {
+    updateExperience(id: $id, company: $company, role: $role, startDate: $startDate, endDate: $endDate, description: $description) {
+      id
+      company
+      role
+      startDate
+      endDate
+      description
+    }
+  }
+`;
+
+export const DELETE_EXPERIENCE = gql`
+  mutation DeleteExperience($id: ID!) {
+    deleteExperience(id: $id) {
+      id
     }
   }
 `;

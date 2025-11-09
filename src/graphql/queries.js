@@ -40,18 +40,20 @@ export const GET_SKILLS = gql`
 `;
 
 // Query pour récupérer les expériences
+// Query pour récupérer les expériences
 export const GET_EXPERIENCES = gql`
   query GetExperiences {
-    experiences {
+    getExperiences {
       id
-      title
       company
-      description
+      role
       startDate
       endDate
+      description
     }
   }
 `;
+
 
 // Query pour récupérer les formations
 export const GET_FORMATIONS = gql`
