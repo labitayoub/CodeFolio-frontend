@@ -19,8 +19,8 @@ const DashboardDocuments = () => {
   const [deleteDocument] = useMutation(DELETE_DOCUMENT);
 
   const handleCreate = async (formData) => {
-    // Vérifier si Photo de profil ou Cover de profil existe déjà
-    if (formData.nom === "Photo de profil" || formData.nom === "Cover de profil") {
+    // Vérifier si Photo de profil, Cover de profil ou CV existe déjà
+    if (formData.nom === "Photo de profil" || formData.nom === "Cover de profil" || formData.nom === "CV") {
       const existingDoc = data?.documents?.find(doc => doc.nom === formData.nom);
       if (existingDoc) {
         toast.error(`Un document "${formData.nom}" existe déjà. Supprimez-le d'abord ou modifiez-le.`);
