@@ -65,3 +65,15 @@ export const DELETE_PROJECT = gql`
     }
   }
 `;
+export const GET_EXPERIENCES = gql`
+  query GetExperiences {
+    getExperiences {
+      id
+      company
+      role
+      startDate
+      endDate
+      description
+    }
+  }
+`;
