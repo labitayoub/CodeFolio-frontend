@@ -5,6 +5,14 @@ const FormationsSection = ({ formations }) => {
 
   const formatDate = (dateString) => {
     if (!dateString) return "";
+    
+    // Si c'est un timestamp (nombre)
+    if (!isNaN(dateString)) {
+      const date = new Date(parseInt(dateString));
+      return date.toISOString().split('T')[0];
+    }
+    
+    // Si c'est déjà une date ISO
     return dateString.split('T')[0];
   };
 
