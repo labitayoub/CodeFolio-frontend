@@ -14,10 +14,10 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-64 bg-white shadow-lg h-screen sticky top-0">
+    <aside className="w-64 bg-white border-r h-screen sticky top-0">
       <div className="p-6 border-b">
-        <h1 className="text-2xl font-bold text-blue-600">CodeFolio</h1>
-        <p className="text-sm text-gray-500">Dashboard</p>
+        <h1 className="text-2xl font-bold text-gray-900">CodeFolio</h1>
+        <p className="text-sm text-gray-500 mt-1">Dashboard</p>
       </div>
       
       <nav className="p-4">
@@ -27,10 +27,10 @@ const Sidebar = () => {
             to={item.path}
             end={item.path === "/dashboard"}
             className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
+              `flex items-center gap-3 px-4 py-3 rounded-lg mb-1 transition ${
                 isActive
-                  ? "bg-blue-500 text-white"
-                  : "text-gray-700 hover:bg-gray-100"
+                  ? "bg-blue-600 text-white"
+                  : "text-gray-700 hover:bg-gray-50"
               }`
             }
           >
