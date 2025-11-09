@@ -221,3 +221,16 @@ export const DELETE_SOCIAL = gql`
     }
   }
 `;
+// Profile
+export const UPDATE_PROFILE = gql`
+  mutation UpdateProfile($nom: String, $prenom: String, $username: String, $email: String, $bio: String) {
+    updateProfil(nom: $nom, prenom: $prenom, username: $username, email: $email, bio: $bio) {
+      id
+      nom
+      prenom
+      username
+      email
+      bio
+    }
+  }
+`;
