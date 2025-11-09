@@ -4,6 +4,14 @@ import Card from "../ui/Card";
 import SocialIcon from "../ui/SocialIcon";
 
 const SocialCard = ({ social, onEdit, onDelete }) => {
+  const formatUrl = (url) => {
+    if (!url) return '#';
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      return url;
+    }
+    return `https://${url}`;
+  };
+
   return (
     <Card>
       <div className="flex items-start gap-3 mb-3">
@@ -13,7 +21,7 @@ const SocialCard = ({ social, onEdit, onDelete }) => {
         <div className="flex-1">
           <h3 className="text-lg font-bold text-gray-800">{social.nom}</h3>
           <a
-            href={social.liensSociaux}
+            href={formatUrl(social.liensSociaux)}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 text-sm text-blue-600 hover:underline mt-1"
