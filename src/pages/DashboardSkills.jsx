@@ -70,8 +70,7 @@ const DashboardSkills = () => {
 
   if (loading) return <Spinner />;
 
-  // Grouper par catégorie
-  const groupedSkills = data?.getSkills?.reduce((acc, skill) => {
+  const groupedSkills = data?.getCompetences?.reduce((acc, skill) => {
     const cat = skill.categorie || "Autre";
     if (!acc[cat]) acc[cat] = [];
     acc[cat].push(skill);
@@ -88,7 +87,7 @@ const DashboardSkills = () => {
         </Button>
       </div>
 
-      {data?.getSkills?.length === 0 ? (
+      {data?.getCompetences?.length === 0 ? (
         <div className="text-center py-12 bg-white rounded-lg shadow-md">
           <p className="text-lg text-gray-600 mb-4">Aucune compétence pour le moment</p>
           <Button onClick={() => setIsModalOpen(true)}>Ajouter votre première compétence</Button>

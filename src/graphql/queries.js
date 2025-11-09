@@ -28,14 +28,15 @@ export const GET_PROJECTS = gql`
 
 // Query pour récupérer toutes les compétences
 export const GET_SKILLS = gql`
-  query GetSkills {
-    getSkills {
+  query GetCompetences {
+    getCompetences {
       id
       name
       categorie
     }
   }
 `;
+
 
 // Query pour récupérer les expériences
 export const GET_EXPERIENCES = gql`
@@ -51,6 +52,15 @@ export const GET_EXPERIENCES = gql`
   }
 `;
 
+export const GET_DOCUMENTS = gql`
+  query GetDocuments {
+    documents {
+      _id
+      nom
+      urlStocket
+    }
+  }
+`;
 
 // Query pour récupérer les formations
 export const GET_FORMATIONS = gql`
@@ -63,6 +73,16 @@ export const GET_FORMATIONS = gql`
       dateDebut
       dateFinal
       description
+    }
+  }
+`;
+export const GET_SOCIAL = gql`
+  query GetSocial {
+    resieauxSociauxs {
+      id
+      nom
+      liensSociaux
+      icon
     }
   }
 `;

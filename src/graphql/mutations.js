@@ -136,30 +136,88 @@ export const DELETE_FORMATION = gql`
   }
 `;
 
-export const  CREATE_SKILL = gql`
-
-mutation CreateSkill($name: String!, $categorie: String){
-  CreateSkill(name: $name, categorie: $categorie){
-    id
-    name
-    categorie
+// Skills
+export const CREATE_SKILL = gql`
+  mutation createCompetence($name: String!, $categorie: String) {
+    createCompetence(name: $name, categorie: $categorie) {
+      id
+      name
+      categorie
+    }
   }
-}
 `;
+
 export const UPDATE_SKILL = gql`
-mutation UpdateSkill($id: ID!, $name: String, $categorie: String){
-  UpdateSkill(id: $id, name: $name, categorie: $categorie){
-    id
-    name
-    categorie
+  mutation updateCompetence($id: ID!, $name: String, $categorie: String) {
+    updateCompetence(id: $id, name: $name, categorie: $categorie) {
+      id
+      name
+      categorie
+    }
   }
-}
 `;
 
 export const DELETE_SKILL = gql`
-mutation DeleteSkill($id: ID!){
-  DeleteSkill(id: $id){
-    id
+  mutation deleteCompetence($id: ID!) {
+    deleteCompetence(id: $id) {
+      id
+    }
   }
-}
+`;
+
+// Documents
+export const CREATE_DOCUMENT = gql`
+  mutation CreateDocument($input: DocumentInput!) {
+    createDocument(input: $input) {
+      _id
+      nom
+      urlStocket
+    }
+  }
+`;
+
+export const UPDATE_DOCUMENT = gql`
+  mutation UpdateDocument($id: ID!, $input: DocumentInput!) {
+    updateDocument(id: $id, input: $input) {
+      _id
+      nom
+      urlStocket
+    }
+  }
+`;
+
+export const DELETE_DOCUMENT = gql`
+  mutation DeleteDocument($id: ID!) {
+    deleteDocument(id: $id)
+  }
+`;
+// Réseaux Sociaux
+export const CREATE_SOCIAL = gql`
+  mutation CreateSocial($nom: String!, $liensSociaux: String!, $icon: String!, $userId: ID!) {
+    createResieauxSociaux(nom: $nom, liensSociaux: $liensSociaux, icon: $icon, userId: $userId) {
+      id
+      nom
+      liensSociaux
+      icon
+    }
+  }
+`;
+
+export const UPDATE_SOCIAL = gql`
+  mutation UpdateSocial($id: ID!, $nom: String, $liensSociaux: String, $icon: String) {
+    updateResieauxSociaux(id: $id, nom: $nom, liensSociaux: $liensSociaux, icon: $icon) {
+      id
+      nom
+      liensSociaux
+      icon
+    }
+  }
+`;
+
+export const DELETE_SOCIAL = gql`
+  mutation DeleteSocial($id: ID!) {
+    deleteResieauxSociaux(id: $id) {
+      id
+    }
+  }
 `;
