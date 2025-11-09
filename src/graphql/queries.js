@@ -13,7 +13,6 @@ export const GET_CURRENT_USER = gql`
 `;
 
 // Query pour récupérer tous les projets
-// Query pour récupérer tous les projets
 export const GET_PROJECTS = gql`
   query GetProjects {
     projects {
@@ -30,16 +29,14 @@ export const GET_PROJECTS = gql`
 // Query pour récupérer toutes les compétences
 export const GET_SKILLS = gql`
   query GetSkills {
-    skills {
+    getSkills {
       id
       name
-      level
-      category
+      categorie
     }
   }
 `;
 
-// Query pour récupérer les expériences
 // Query pour récupérer les expériences
 export const GET_EXPERIENCES = gql`
   query GetExperiences {
@@ -60,11 +57,12 @@ export const GET_FORMATIONS = gql`
   query GetFormations {
     formations {
       id
-      title
-      institution
+      filiere
+      ecole
+      localisation
+      dateDebut
+      dateFinal
       description
-      startDate
-      endDate
     }
   }
 `;

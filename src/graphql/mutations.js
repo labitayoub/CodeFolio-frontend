@@ -99,3 +99,67 @@ export const DELETE_EXPERIENCE = gql`
     }
   }
 `;
+// Formations
+export const CREATE_FORMATION = gql`
+  mutation CreateFormation($filiere: String!, $ecole: String!, $localisation: String!, $dateDebut: String!, $dateFinal: String!, $description: String!, $userId: ID!) {
+    createFormation(filiere: $filiere, ecole: $ecole, localisation: $localisation, dateDebut: $dateDebut, dateFinal: $dateFinal, description: $description, userId: $userId) {
+      id
+      filiere
+      ecole
+      localisation
+      dateDebut
+      dateFinal
+      description
+    }
+  }
+`;
+
+export const UPDATE_FORMATION = gql`
+  mutation UpdateFormation($id: ID!, $filiere: String, $ecole: String, $localisation: String, $dateDebut: String, $dateFinal: String, $description: String) {
+    updateFormation(id: $id, filiere: $filiere, ecole: $ecole, localisation: $localisation, dateDebut: $dateDebut, dateFinal: $dateFinal, description: $description) {
+      id
+      filiere
+      ecole
+      localisation
+      dateDebut
+      dateFinal
+      description
+    }
+  }
+`;
+
+export const DELETE_FORMATION = gql`
+  mutation DeleteFormation($id: ID!) {
+    deleteFormation(id: $id) {
+      id
+    }
+  }
+`;
+
+export const  CREATE_SKILL = gql`
+
+mutation CreateSkill($name: String!, $categorie: String){
+  CreateSkill(name: $name, categorie: $categorie){
+    id
+    name
+    categorie
+  }
+}
+`;
+export const UPDATE_SKILL = gql`
+mutation UpdateSkill($id: ID!, $name: String, $categorie: String){
+  UpdateSkill(id: $id, name: $name, categorie: $categorie){
+    id
+    name
+    categorie
+  }
+}
+`;
+
+export const DELETE_SKILL = gql`
+mutation DeleteSkill($id: ID!){
+  DeleteSkill(id: $id){
+    id
+  }
+}
+`;

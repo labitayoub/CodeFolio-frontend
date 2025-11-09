@@ -12,16 +12,26 @@ const Login = () => {
   const navigate = useNavigate();
 
   // Utiliser Apollo Client useMutation
-  const [login, { loading }] = useMutation(LOGIN_MUTATION, {
-    onCompleted: (data) => {
-      localStorage.setItem('token', data.login);
-      toast.success('✅ Login réussi!');
-      navigate('/dashboard');
-    },
-    onError: (err) => {
-      toast.error(err.message || 'Erreur de connexion');
+const [login, { loading }] = useMutation(LOGIN_MUTATION, {
+  onCompleted: (data) => {
+    localStorage.setItem('token', data.login);
+    
+    // Décoder le JWT pour extraire userId
+    try {
+      const payload = JSON.parse(atob(data.login.split('.')[1]));
+      localStorage.setItem('userId', payload.userId || payload.id);
+    } catch (error) {
+      console.error('Erreur décodage token:', error);
     }
-  });
+    
+    toast.success('✅ Login réussi!');
+    navigate('/dashboard');
+  },
+  onError: (err) => {
+    toast.error(err.message || 'Erreur de connexion');
+  }
+});
+
 
   const handleChange = (e) => {
     setFormData({
