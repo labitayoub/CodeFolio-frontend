@@ -28,11 +28,11 @@ const Portfolio = () => {
     );
   }
 
-  const { user, projects, experiences, formations, skills, social } = data.getPortfolioByUsername;
+  const { user, projects, experiences, formations, skills, documents, social } = data.getPortfolioByUsername;
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <PortfolioHeader user={user} />
+      <PortfolioHeader user={user} documents={documents} />
       <ProjectsSection projects={projects} />
       <ExperienceTimeline experiences={experiences} />
       <FormationsSection formations={formations} />
