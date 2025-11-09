@@ -3,6 +3,11 @@ import { Briefcase } from "lucide-react";
 const ExperienceTimeline = ({ experiences }) => {
   if (!experiences || experiences.length === 0) return null;
 
+  const formatDate = (dateString) => {
+    if (!dateString) return "Présent";
+    return dateString.split('T')[0];
+  };
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4">
@@ -17,7 +22,7 @@ const ExperienceTimeline = ({ experiences }) => {
                 <h3 className="text-xl font-bold text-gray-800">{exp.role}</h3>
                 <p className="text-gray-600">{exp.company}</p>
                 <p className="text-sm text-gray-500 mt-1">
-                  {exp.startDate} - {exp.endDate || "Présent"}
+                  {formatDate(exp.startDate)} - {formatDate(exp.endDate)}
                 </p>
                 {exp.description && (
                   <p className="text-gray-700 mt-3">{exp.description}</p>

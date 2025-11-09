@@ -3,6 +3,11 @@ import { GraduationCap } from "lucide-react";
 const FormationsSection = ({ formations }) => {
   if (!formations || formations.length === 0) return null;
 
+  const formatDate = (dateString) => {
+    if (!dateString) return "";
+    return dateString.split('T')[0];
+  };
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4">
@@ -18,7 +23,7 @@ const FormationsSection = ({ formations }) => {
                 <p className="text-gray-600">{formation.ecole}</p>
                 <p className="text-sm text-gray-500">{formation.localisation}</p>
                 <p className="text-sm text-gray-500 mt-1">
-                  {formation.dateDebut} - {formation.dateFinal}
+                  {formatDate(formation.dateDebut)} - {formatDate(formation.dateFinal)}
                 </p>
                 {formation.description && (
                   <p className="text-gray-700 mt-3">{formation.description}</p>
