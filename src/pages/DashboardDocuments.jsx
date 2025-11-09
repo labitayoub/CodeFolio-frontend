@@ -65,17 +65,22 @@ const DashboardDocuments = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    if (confirm("Supprimer ce document ?")) {
-      try {
-        await deleteDocument({ variables: { id } });
-        toast.success("Document supprimé !");
-        refetch();
-      } catch (error) {
+const handleDelete = async (id) => {
+  if (confirm("Supprimer ce document ?")) {
+    try {
+      await deleteDocument({ variables: { id } });
+    } catch (error) {
+      // Ignorer l'erreur de type Boolean du backend
+      if (!error.message.includes("Boolean cannot represent")) {
         toast.error(error.message);
+        return;
       }
     }
-  };
+    toast.success("Document supprimé !");
+    refetch();
+  }
+};
+
 
   const openEditModal = (document) => {
     setEditingDocument(document);
