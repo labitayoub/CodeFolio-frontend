@@ -56,47 +56,48 @@ const handleSubmit = async (e) => {
 };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 py-4">
+      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+        <h2 className="text-xl font-bold mb-4 text-center text-gray-800">
           Inscription
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Nom *
-            </label>
-            <input
-              type="text"
-              name="nom"
-              value={formData.nom}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Votre nom"
-              required
-              disabled={loading}
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Prénom *
-            </label>
-            <input
-              type="text"
-              name="prenom"
-              value={formData.prenom}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Votre prénom"
-              required
-              disabled={loading}
-            />
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-1">
+                Nom *
+              </label>
+              <input
+                type="text"
+                name="nom"
+                value={formData.nom}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Nom"
+                required
+                disabled={loading}
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-1">
+                Prénom *
+              </label>
+              <input
+                type="text"
+                name="prenom"
+                value={formData.prenom}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Prénom"
+                required
+                disabled={loading}
+              />
+            </div>
           </div>
 <div>
-  <label className="block text-gray-700 text-sm font-bold mb-2">
-    Nom d'utilisateur *
+  <label className="block text-gray-700 text-sm font-bold mb-1">
+    Username *
   </label>
   <input
     type="text"
@@ -108,14 +109,11 @@ const handleSubmit = async (e) => {
     required
     disabled={loading}
   />
-  <p className="text-xs text-gray-500 mt-1">
-    Votre portfolio sera accessible sur : /{formData.username || 'username'}
-  </p>
 </div>
 
 
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="block text-gray-700 text-sm font-bold mb-1">
               Email *
             </label>
             <input
@@ -131,7 +129,7 @@ const handleSubmit = async (e) => {
           </div>
 
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="block text-gray-700 text-sm font-bold mb-1">
               Mot de passe *
             </label>
             <input
@@ -147,7 +145,7 @@ const handleSubmit = async (e) => {
           </div>
 
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="block text-gray-700 text-sm font-bold mb-1">
               Bio (optionnel)
             </label>
             <textarea
@@ -156,7 +154,7 @@ const handleSubmit = async (e) => {
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Parlez-nous de vous..."
-              rows="3"
+              rows="2"
               disabled={loading}
             />
           </div>

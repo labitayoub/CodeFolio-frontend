@@ -13,11 +13,13 @@ import DashboardDocuments from "./pages/DashboardDocuments";
 import DashboardSocial from "./pages/DashboardSocial";
 import DashboardProfile from "./pages/DashboardProfile";
 import Portfolio from "./pages/Portfolio";
+import Home from "./pages/Home";
 
 const App = () => (
   <BrowserRouter>
     <Routes>
       {/* Routes publiques */}
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
       <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
       
@@ -37,7 +39,6 @@ const App = () => (
       <Route path="/:username" element={<Portfolio />} />
       
       {/* Redirections */}
-      <Route path="/" element={<Navigate to="/dashboard" replace />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </BrowserRouter>
