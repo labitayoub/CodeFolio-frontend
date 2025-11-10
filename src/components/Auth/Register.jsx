@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { toast } from 'react-hot-toast';
+import { ArrowLeft } from 'lucide-react';
 import { REGISTER_MUTATION } from '../../graphql/mutations';
 
 const Register = () => {
@@ -58,9 +59,15 @@ const handleSubmit = async (e) => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 py-4">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-xl font-bold mb-4 text-center text-gray-800">
-          Inscription
-        </h2>
+        <div className="flex items-center justify-between mb-4">
+          <Link to="/" className="text-gray-500 hover:text-gray-700 transition-colors">
+            <ArrowLeft className="w-5 h-5" />
+          </Link>
+          <h2 className="text-xl font-bold text-gray-800">
+            Inscription
+          </h2>
+          <div className="w-5"></div>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="grid grid-cols-2 gap-3">
@@ -170,9 +177,9 @@ const handleSubmit = async (e) => {
 
         <p className="mt-4 text-center text-gray-600 text-sm">
           Déjà un compte ?{' '}
-          <a href="/login" className="text-blue-500 hover:underline">
+          <Link to="/login" className="text-blue-500 hover:underline">
             Se connecter
-          </a>
+          </Link>
         </p>
       </div>
     </div>

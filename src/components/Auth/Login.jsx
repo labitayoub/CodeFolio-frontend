@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { toast } from 'react-hot-toast';
+import { ArrowLeft } from 'lucide-react';
 import { LOGIN_MUTATION } from '../../graphql/mutations';
 
 const Login = () => {
@@ -55,9 +56,15 @@ const [login, { loading }] = useMutation(LOGIN_MUTATION, {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-          Connexion
-        </h2>
+        <div className="flex items-center justify-between mb-6">
+          <Link to="/" className="text-gray-500 hover:text-gray-700 transition-colors">
+            <ArrowLeft className="w-5 h-5" />
+          </Link>
+          <h2 className="text-2xl font-bold text-gray-800">
+            Connexion
+          </h2>
+          <div className="w-5"></div>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -103,9 +110,9 @@ const [login, { loading }] = useMutation(LOGIN_MUTATION, {
 
         <p className="mt-4 text-center text-gray-600 text-sm">
           Pas encore de compte ?{' '}
-          <a href="/register" className="text-blue-500 hover:underline">
+          <Link to="/register" className="text-blue-500 hover:underline">
             S'inscrire
-          </a>
+          </Link>
         </p>
       </div>
     </div>
